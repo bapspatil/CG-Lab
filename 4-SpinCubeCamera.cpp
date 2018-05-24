@@ -1,7 +1,7 @@
 //SPIN CUBE WITH CAMERA
 #include<stdlib.h>
 #include<stdio.h>
-#include<GL/glut.h>
+#include<GLUT/glut.h>
 #include<math.h>
 float v[8][3]={{-1,-1,1},{-1,1,1},{1,1,1},{1,-1,1},
 				{-1,-1,-1},{-1,1,-1},{1,1,-1},{1,-1,-1}};
@@ -91,16 +91,17 @@ void display()
 	glFlush();
 	glutSwapBuffers();
 }
-void main()
+int main()
 {
-		glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE |GLUT_DEPTH);
-		glutInitWindowPosition(100,100);
-		glutInitWindowSize(500,500);
-		glutCreateWindow("cube with camera movement");
-		myinit();		
-		glutDisplayFunc(display);
-		glutMouseFunc(mousefunc);
-		glutKeyboardFunc(mykey);
-		glutReshapeFunc(reshape);
-		glutMainLoop();
+        glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE |GLUT_DEPTH);
+        glutInitWindowPosition(100,100);
+        glutInitWindowSize(500,500);
+        glutCreateWindow("cube with camera movement");
+        myinit();
+        glutDisplayFunc(display);
+        glutMouseFunc(mousefunc);
+        glutKeyboardFunc(mykey);
+        glutReshapeFunc(reshape);
+        glutMainLoop();
+    return 0;
 }

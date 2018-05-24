@@ -1,7 +1,7 @@
 //Program 2 Rotate a Triangle
 #include<stdlib.h>
 #include<stdio.h>
-#include<GL/glut.h>
+#include<GLUT/glut.h>
 #include<math.h>
 float p[9][2]={{20,20},{40,40},{60,20}};
 float xp,yp,theta,rtheta;
@@ -42,17 +42,18 @@ void display()
 	glFlush();
 
 }
-void main()
+int main()
 {
-		glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
-		glutInitWindowPosition(100,100);
-		glutInitWindowSize(500,500);
-		glutCreateWindow("Traingle rotation");
-		myinit();
-		printf("Enter the point of rotation\n");
-		scanf("%f%f",&xp,&yp);
-		printf("Enter the angle of rotation\n");
-		scanf("%f",&theta);
-		glutDisplayFunc(display);
-		glutMainLoop();
+        glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
+        glutInitWindowPosition(100,100);
+        glutInitWindowSize(500,500);
+        glutCreateWindow("Traingle rotation");
+        myinit();
+        printf("Enter the point of rotation\n");
+        scanf("%f%f",&xp,&yp);
+        printf("Enter the angle of rotation\n");
+        scanf("%f",&theta);
+        glutDisplayFunc(display);
+        glutMainLoop();
+    return 0;
 }

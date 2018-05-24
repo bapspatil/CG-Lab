@@ -1,7 +1,7 @@
 //Spin Cube
 #include<stdlib.h>
 #include<stdio.h>
-#include<GL/glut.h>
+#include<GLUT/glut.h>
 #include<math.h>
 float v[8][3]={{-1,-1,1},{-1,1,1},{1,1,1},{1,-1,1},
 				{-1,-1,-1},{-1,1,-1},{1,1,-1},{1,-1,-1}};
@@ -69,16 +69,17 @@ void display()
 	glFlush();
 	glutSwapBuffers();
 }
-void main()
+int main()
 {
-		glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE |GLUT_DEPTH);
-		glutInitWindowPosition(100,100);
-		glutInitWindowSize(500,500);
-		glutCreateWindow("cube rotation");
-		myinit();
-		
-		glutDisplayFunc(display);
-		glutMouseFunc(mousefunc);
-		glutIdleFunc(idlefunc);
-		glutMainLoop();
+        glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE |GLUT_DEPTH);
+        glutInitWindowPosition(100,100);
+        glutInitWindowSize(500,500);
+        glutCreateWindow("cube rotation");
+        myinit();
+    
+        glutDisplayFunc(display);
+        glutMouseFunc(mousefunc);
+        glutIdleFunc(idlefunc);
+        glutMainLoop();
+    return 0;
 }

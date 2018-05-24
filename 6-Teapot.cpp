@@ -1,8 +1,7 @@
 #include<stdlib.h>
 #include<stdio.h>
-#include<conio.h>
 #include<math.h>
-#include<GL/glut.h>
+#include<GLUT/glut.h>
 
 void myinit()
 {
@@ -105,18 +104,19 @@ void display()
 	glFlush();
 }
 
-void main()
+int main()
 {
-	glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
-	glutInitWindowSize(500,500);
-	glutInitWindowPosition(100,100);
-	glutCreateWindow("Scene");
-	myinit();
-	glutDisplayFunc(display);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0 );
-	glShadeModel(GL_SMOOTH);
-	 glEnable(GL_NORMALIZE);
-	 glEnable(GL_DEPTH_TEST);
-	glutMainLoop();
+    glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
+    glutInitWindowSize(500,500);
+    glutInitWindowPosition(100,100);
+    glutCreateWindow("Scene");
+    myinit();
+    glutDisplayFunc(display);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0 );
+    glShadeModel(GL_SMOOTH);
+     glEnable(GL_NORMALIZE);
+     glEnable(GL_DEPTH_TEST);
+    glutMainLoop();
+    return 0;
 }

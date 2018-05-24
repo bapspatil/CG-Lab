@@ -1,4 +1,4 @@
-#include <GL/glut.h>
+#include <GLUT/glut.h>
 #include <stdio.h>
 #include <math.h>
 #define PI 3.1416
@@ -109,7 +109,7 @@ void winReshapeFun(GLint newWidth, GLint newHeight)
     gluOrtho2D(xwcMin, xwcMax, ywcMin, ywcMax);
     glClear(GL_COLOR_BUFFER_BIT);
 }
-void main(int argc, char **argv)
+int main(int argc, char **argv)
 {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
@@ -120,4 +120,5 @@ void main(int argc, char **argv)
     glutReshapeFunc(winReshapeFun);
 
     glutMainLoop();
+    return 0;
 }

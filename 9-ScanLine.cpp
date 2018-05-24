@@ -1,5 +1,5 @@
 //Scan Line Algorithm
-#include <GL/glut.h>
+#include <GLUT/glut.h>
 #include <stdio.h>
 
 //Global Edge table
@@ -101,7 +101,7 @@ void myinit()
     glMatrixMode(GL_MODELVIEW);
 
 }
-void main(int argc, char** argv)
+int main(int argc, char** argv)
 {
     glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
     glutInitWindowSize(500,500);
@@ -110,4 +110,5 @@ void main(int argc, char** argv)
     myinit();
     glutDisplayFunc(display);
     glutMainLoop();
+    return 0;
 }

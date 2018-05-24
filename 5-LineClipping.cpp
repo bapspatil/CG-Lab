@@ -1,6 +1,6 @@
 //Cohen Sutherland Line clipping Algorithm
 #include<stdio.h>
-#include<GL/glut.h>
+#include<GLUT/glut.h>
 #define opcode int 
 enum {top=0x8,bottom=0x4,left=0x1,right=0x2};
 float xmin,xmax,ymin,ymax,umin,umax,vmin,vmax;
@@ -129,23 +129,24 @@ void display()
 glFlush();
 }
 
-void main()
+int main()
 {
-	glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
-	glutInitWindowPosition(100,100);
-	glutInitWindowSize(500,500);
-	glutCreateWindow("CLIPPING ALGORITHM");
-	myinit();
+    glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
+    glutInitWindowPosition(100,100);
+    glutInitWindowSize(500,500);
+    glutCreateWindow("CLIPPING ALGORITHM");
+    myinit();
+//
+    printf("Enter the clipping window points xmin,xmax,ymin,ymax");
+    scanf("%f%f%f%f",&xmin,&xmax,&ymin,&ymax);
+    printf("Enter the display window points umin,umax,vmin,vmax");
+    scanf("%f%f%f%f",&umin,&umax,&vmin,&vmax);
+    printf("\nEnter the first point x1,y1\n");
+    scanf("%f%f",&x1,&y1);
+    printf("\nEnter the second point x2,y2\n");
+    scanf("%f%f",&x2,&y2);
 
-	printf("Enter the clipping window points xmin,xmax,ymin,ymax");
-	scanf("%f%f%f%f",&xmin,&xmax,&ymin,&ymax);
-	printf("Enter the display window points umin,umax,vmin,vmax");
-	scanf("%f%f%f%f",&umin,&umax,&vmin,&vmax);
-	printf("\nEnter the first point x1,y1\n");
-	scanf("%f%f",&x1,&y1);
-	printf("\nEnter the second point x2,y2\n");
-	scanf("%f%f",&x2,&y2);
-
-	glutDisplayFunc(display);
-	glutMainLoop();
+    glutDisplayFunc(display);
+    glutMainLoop();
+    return 0;
 }

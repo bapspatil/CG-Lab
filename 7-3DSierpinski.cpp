@@ -2,7 +2,7 @@
 sierpinski gasket. The number of recursive steps is to be specified by the user.
 */
 #include<stdlib.h>
-#include<GL/glut.h>
+#include<GLUT/glut.h>
 #include<stdio.h>
 #include<math.h>
 int n;
@@ -56,16 +56,16 @@ void display1()
 		divide_triangle(v[3],v[1],v[2],n);
 		glFlush();			// Process all OpenGL routines as quickly as possible.
 }
-void main()
+int main()
 {
-		glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);// sets buffering and color mode for a display window
-		glutInitWindowPosition(100,100);	    //Specifies coordinates for the top-left corner of a display window.
-		glutInitWindowSize(500,500);		    //Specifies width and height for a display window.
-		glutCreateWindow("3D SIERPINSKI PATTERN");  //Creates a display window & specify a display-window title
-		printf("Enter the value of n");
-		scanf_s("%d",&n);
-		myinit();				   // Execute initialization procedure.
-		glutDisplayFunc(display1);		   //Invokes a function to create a picture within the current display window.
-		glutMainLoop();				   //Executes the computer-graphics program.
-
+        glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);// sets buffering and color mode for a display window
+        glutInitWindowPosition(100,100);        //Specifies coordinates for the top-left corner of a display window.
+        glutInitWindowSize(500,500);            //Specifies width and height for a display window.
+        glutCreateWindow("3D SIERPINSKI PATTERN");  //Creates a display window & specify a display-window title
+        printf("Enter the value of n");
+        scanf("%d",&n);
+        myinit();                   // Execute initialization procedure.
+        glutDisplayFunc(display1);           //Invokes a function to create a picture within the current display window.
+        glutMainLoop();                   //Executes the computer-graphics program.
+    return 0;
 }
