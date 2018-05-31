@@ -27,7 +27,8 @@ void keyboard(unsigned char key, int x, int y)
 	glutPostRedisplay();
 }
 
-No glutPostRedisplay() in reshape() void reshape(int w, int h)
+// No glutPostRedisplay() in reshape() 
+void reshape(int w, int h)
 {
 	glViewport(0, 0, w, h);
 	glMatrixMode(GL_PROJECTION);
