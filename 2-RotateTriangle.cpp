@@ -1,58 +1,64 @@
-//Program 2 Rotate a Triangle
-#include<stdlib.h>
-#include<stdio.h>
-#include<GL/glut.h>
-#include<math.h>
-float p[9][2]={{20,20},{40,40},{60,20}};
-float xp,yp,theta,rtheta;
-void myinit()
-{
+//Create and rotate a triangle about the origin and a fixed point.
+
+#include <stdio.h>
+#include <math.h>
+#include <GL/glut.h>
+
+float th;
+int xp, yp;
+int p[3][2];
+
+void myinit() {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(-100,100,-100,100);
+	gluOrtho2D(0, 500, 0, 500);
 	glMatrixMode(GL_MODELVIEW);
 }
-void drawtraiangle()
-{
-	glBegin(GL_TRIANGLES);
-		glVertex2fv(p[0]);
-		glVertex2fv(p[1]);
-		glVertex2fv(p[2]);
-		
-	glEnd();
-}
-void display()
-{
-	float x,y;
-	glClearColor(1,1,1,1);
-	glClear(GL_COLOR_BUFFER_BIT);
-	glColor3f(1,0,0);
-	drawtraiangle();
-	rtheta=(theta*3.142)/180;
-	
-	for(int i=0;i<3;i++)
-	{
-		x=p[i][0];
-		y=p[i][1];
-		p[i][0]= xp + (x-xp)*cos(rtheta) - (y-yp)*sin(rtheta);
-		p[i][1]= yp + (x-xp)*sin(rtheta) + (y-yp)*cos(rtheta);
-	}
-	glColor3f(0,1,0);
-	drawtraiangle();
-	glFlush();
 
+void drawTriangle() {
+	glBegin(GL_POLYGON);
+		glVertex2iv(p[0]);
+		glVertex2iv(p[1]);
+		glVertex2iv(p[2]);
+	glEnd();
+	glFlush();
 }
-void main()
-{
-		glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
-		glutInitWindowPosition(100,100);
-		glutInitWindowSize(500,500);
-		glutCreateWindow("Traingle rotation");
-		myinit();
-		printf("Enter the point of rotation\n");
-		scanf("%f%f",&xp,&yp);
-		printf("Enter the angle of rotation\n");
-		scanf("%f",&theta);
-		glutDisplayFunc(display);
-		glutMainLoop();
+
+void rotate() {
+	float x, y, rth;
+	rth = th * 3.142 / 180;
+	for (int k = 0; k < 3; k++) {
+		x = p[k][0];
+		y = p[k][1];
+		p[k][0] = x * cos(rth) - y * sin(rth) + xp * (1 - cos(rth)) + yp * sin(rth);
+		p[k][1] = x * sin(rth) + y * cos(rth) - xp * sin(rth) + yp * (1 - cos(rth));
+	}
+	glColor3f(0, 1, 0);
+	drawTriangle();
+}
+
+void display() {
+	glClearColor(1, 1, 1, 1);
+	glClear(GL_COLOR_BUFFER_BIT);
+	glColor3f(0, 0, 1);
+	drawTriangle();
+	rotate();
+	glFlush();
+}
+
+int main() {
+	glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
+	glutInitWindowSize(500, 500);
+	glutInitWindowPosition(30, 30);
+	glutCreateWindow("Rotate triangle");
+	myinit();
+	printf("Enter coordinates of triangle:\n");
+	for (int i = 0; i < 3; i++)
+		scanf_s("%d%d", &p[i][0], &p[i][1]);
+	printf("Enter pivot point: ");
+	scanf_s("%d%d", &xp, &yp);
+	printf("Enter rotation angle: ");
+	scanf_s("%f", &th);
+	glutDisplayFunc(display);
+	glutMainLoop();
 }
