@@ -79,5 +79,5 @@ int main() {
 	scanf_s("%d %d", &xend, &yend);
 
 	glutDisplayFunc(display);
-glutMainLoop();
+	glutMainLoop();
 }
